@@ -20,6 +20,8 @@ const HeaderCartButton = (props) => {
     btnIsHighlighted ? classes.bump : ""
   }`;
 
+  // dynamic animation bump
+
   useEffect(() => {
     if (items.length === 0) {
       return;
