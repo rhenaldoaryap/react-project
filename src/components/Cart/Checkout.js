@@ -27,26 +27,33 @@ const Checkout = (props) => {
     const enteredCity = cityInputRef.current.value;
 
     const enteredNameIsValid = !isEmpty(enteredName);
-    const enteredStreeIsValid = !isEmpty(enteredStreet);
+    const enteredStreetIsValid = !isEmpty(enteredStreet);
     const enteredPostalCodeIsValid = isFiveChars(enteredPostalCode);
     const enteredCityIsValid = !isEmpty(enteredCity);
 
     setFormInputValidity({
       name: enteredNameIsValid,
-      street: enteredStreeIsValid,
+      street: enteredStreetIsValid,
       city: enteredCityIsValid,
       postalCode: enteredPostalCodeIsValid,
     });
 
     const formIsValid =
       enteredNameIsValid &&
-      enteredStreeIsValid &&
+      enteredStreetIsValid &&
       enteredPostalCodeIsValid &&
       enteredCityIsValid;
 
     if (!formIsValid) {
       return;
     }
+
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode,
+    });
 
     nameInputRef.current.value = "";
     streetInputRef.current.value = "";
